@@ -49,7 +49,7 @@ namespace Todo0912.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok();
         }
 
         private bool TodoExists(int id)
