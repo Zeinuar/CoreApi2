@@ -23,16 +23,10 @@ namespace Todo0912.Controllers
 
         //Get All Todo’s
         // GET: api/Todo
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
         [HttpGet]
         public IEnumerable<Todo> GetAll()
         {
-                return _context.Todos;
+            return _context.Todos;
         }
 
         //Get Specific Todo

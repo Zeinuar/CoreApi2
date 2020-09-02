@@ -9,7 +9,9 @@ namespace Todo0912.Data
 {
     public class TodoDbContext:DbContext
     {
-        public TodoDbContext(DbContextOptions<TodoDbContext> options):base(options){
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+            //for connection local db
+            optionsBuilder.UseSqlServer(@"server=zein;database=DbTask;user id=sa;password=manuver;integrated security=true");
         }
 
         public DbSet<Todo> Todos { get; set; }

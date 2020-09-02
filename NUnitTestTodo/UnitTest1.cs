@@ -6,15 +6,18 @@ namespace Tests
 {
     public class Tests
     {
-        private HttpClient client;
         private HttpResponseMessage response;
 
         [SetUp]
         public void Setup()
         {
-            client = new HttpClient();
+
+            using (var handler = new HttpClientHandler())
+            using (var client = new HttpClient(handler)) {
+                client.BaseAddress = new System.Uri("http://localhost:5000/api/");
+                response = client.GetAsync("Todo").Result;
+            }
             
-            response = client.GetAsync("api/Todo").Result;
         }
 
         [Test]
